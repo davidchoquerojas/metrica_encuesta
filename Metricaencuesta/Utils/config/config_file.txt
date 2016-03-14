@@ -1,0 +1,1 @@
+alto:>71,medio:>45,bajo:<45
