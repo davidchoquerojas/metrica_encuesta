@@ -26,6 +26,7 @@ namespace Metricaencuesta.Models
         public DbSet<resultado> resultadoes { get; set; }
         public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<encuesta_config> encuesta_config { get; set; }
+        public DbSet<documento> documento { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -39,6 +40,7 @@ namespace Metricaencuesta.Models
             modelBuilder.Configurations.Add(new resultadoMap());
             modelBuilder.Configurations.Add(new encuesta_configMap());
             modelBuilder.Configurations.Add(new sysdiagramMap());
+            modelBuilder.Configurations.Add(new documentoMap());
         }
     }
 }

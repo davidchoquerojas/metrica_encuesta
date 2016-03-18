@@ -1,6 +1,7 @@
 ﻿var latitude = "";var longitude = "";
 app.controller("AsistenciaCtrl", function ($scope, $location, $timeout, AppFctry, AppService) {
     $scope.asisType = AppService.asisType();
+    $scope.isMobile = AppService.isMobile();
     $scope.dateNow = "";
     $scope.timeNow = "";
     $scope.listAsistencia = [];
@@ -28,7 +29,7 @@ app.controller("AsistenciaCtrl", function ($scope, $location, $timeout, AppFctry
     $scope.save = function () {
         AppFctry.saveAsistencia({}, new asistencia()).$promise.then(function (res) {
             if(res.length > 0){
-                AppService.showMessage("OK! ", "Asistencia marcarda con exito.");
+                AppService.showMessage("OK! ", "Asistencia marcada con exito.");
                 $scope.listAsistencia = res;
                 $scope.tipo_asistencia = undefined;
             }

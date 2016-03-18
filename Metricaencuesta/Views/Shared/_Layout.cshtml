@@ -37,14 +37,14 @@
             </div>
         </div>
     </header>
-    <nav class="nav-bar">
+    <nav class="nav-bar" ng-controller="navCtrl">
         <div class="row">
-            <div class="col-xs-8 col-sm-8 col-md-10 nav_left">
+            <div class="col-xs-6 col-sm-6 col-md-8 nav_left">
                 <strong class="hidden-xs">Bienvenido : </strong>
                 <span>@Html.Raw(Session["nombres"]).ToString()</span> 
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-2 nav_right">
+            <div class="col-xs-6 col-sm-6 col-md-4 nav_right">
                 <a href="~/login/close" class="pull-right">
                     <span class="glyphicon glyphicon-off"></span>
                     <span class="hidden-xs">Salir</span>
@@ -53,8 +53,13 @@
                     <span class="glyphicon glyphicon-home"></span>
                     <span class="hidden-xs">Inicio</span>
                 </a>
+                <a href="#" id="view_document" class="pull-right" ng-click="viewDocument()">
+                    <span class="glyphicon glyphicon-folder-open"></span>
+                    <span class="hidden-xs">Documentos</span>
+                </a>
             </div>
         </div>
+        @Html.Partial("../partial/DocumentoView")
     </nav>
     <section class="container">
         @RenderBody()
@@ -70,5 +75,25 @@
     <script src="~/Scripts/appjs/app-service.js"></script>
     <script src="~/Scripts/appjs/utilitario.js"></script>
     @RenderSection("scripts", required: false)
+    <script>
+        (function () {
+            debugger;
+            try {
+                var $_console$$ = console;
+                Object.defineProperty(window, "console", {
+                    get: function () {
+                        if ($_console$$._commandLineAPI)
+                            throw "!CUIDADO!, prohibido piratear el codigo si no metrica te puede demandar o puede ocacionar tu despido sin goze de haber.";
+                        return $_console$$
+                    },
+                    set: function ($val$$) {
+                        $_console$$ = $val$$
+                    }
+                });
+            } catch (ex) {
+                alert('errror');
+            }
+        })();
+    </script>
 </body>
 </html>

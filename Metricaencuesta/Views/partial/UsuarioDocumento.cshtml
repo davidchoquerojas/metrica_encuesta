@@ -1,0 +1,30 @@
+﻿<div id="modal_usuario" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" style="color:black;">Visto Por</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <ul class="list-group">
+                            <li class="list-group-item" ng-repeat="e in listEmpleado">
+                                <div class="row">
+                                    <div class="avatar col-md-1">
+                                        <img ng-if="e.foto != null" ng-src="{{e.foto}}" />
+                                        <img ng-if="e.foto == null" src="../Utils/img/logo_profile.png" />
+                                    </div>
+                                    <div class="avatar_field col-md-11">
+                                        <h4>{{e.nombres +' '+e.apellidos}}</h4>
+                                        <h6>{{e.correo}}</h6>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

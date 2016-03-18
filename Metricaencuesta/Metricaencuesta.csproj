@@ -160,6 +160,7 @@
     <Compile Include="Controllers\AsistenciaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ClienteEmpleadoController.cs" />
+    <Compile Include="Controllers\DocumentoController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\EncuestaConfigController.cs" />
     <Compile Include="Controllers\EvaluadorController.cs" />
@@ -172,6 +173,7 @@
     <Compile Include="Data\AsistenciaDB.cs" />
     <Compile Include="Data\ClienteDB.cs" />
     <Compile Include="Data\ClienteEmpleadoDB.cs" />
+    <Compile Include="Data\DocumentoDB.cs" />
     <Compile Include="Data\EmpleadoDB.cs" />
     <Compile Include="Data\Encuesta_configDB.cs" />
     <Compile Include="Data\EvaluadorDB.cs" />
@@ -185,6 +187,7 @@
     <Compile Include="Models\asistencia.cs" />
     <Compile Include="Models\cliente.cs" />
     <Compile Include="Models\cliente_empleado.cs" />
+    <Compile Include="Models\documento.cs" />
     <Compile Include="Models\empleado.cs" />
     <Compile Include="Models\encuesta_config.cs" />
     <Compile Include="Models\evaluador.cs" />
@@ -192,6 +195,7 @@
     <Compile Include="Models\Mapping\asistenciaMap.cs" />
     <Compile Include="Models\Mapping\clienteMap.cs" />
     <Compile Include="Models\Mapping\cliente_empleadoMap.cs" />
+    <Compile Include="Models\Mapping\documentoMap.cs" />
     <Compile Include="Models\Mapping\empleadoMap.cs" />
     <Compile Include="Models\Mapping\encuestaMap.cs" />
     <Compile Include="Models\Mapping\encuesta_configMap.cs" />
@@ -276,6 +280,7 @@
     </Content>
     <Content Include="Scripts\appjs\asistencia-controller.js" />
     <Content Include="Scripts\appjs\cliente_empleado-controller.js" />
+    <Content Include="Scripts\appjs\documento-controller.js" />
     <Content Include="Scripts\appjs\empleado-controller.js" />
     <Content Include="Scripts\appjs\cliente-controller.js" />
     <Content Include="Scripts\appjs\encuesta_config-controller.js" />
@@ -297,6 +302,10 @@
     <Content Include="Content\instruccion.css.map">
       <DependentUpon>instruccion.css</DependentUpon>
     </Content>
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Properties\PublishProfiles\Encuesta.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\angular-locale_es-pe.js" />
@@ -310,7 +319,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
-    <Content Include="Utils\config\config_file.txt" />
     <Content Include="Utils\cvs\cv.txt" />
     <Content Include="Utils\img\empresa.jpg" />
     <Content Include="Utils\img\loading.gif" />
@@ -349,6 +357,9 @@
     <Content Include="Views\Login\Auth.cshtml" />
     <Content Include="Views\Home\EncuestaConfig.cshtml" />
     <Content Include="Views\Home\ReporteEncuesta.cshtml" />
+    <Content Include="Views\partial\DocumentoView.cshtml" />
+    <Content Include="Views\Home\Documento.cshtml" />
+    <Content Include="Views\partial\UsuarioDocumento.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

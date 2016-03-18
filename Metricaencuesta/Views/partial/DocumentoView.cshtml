@@ -1,0 +1,22 @@
+﻿<div id="modal_document" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" style="color:black;">Documentos</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 box-document" ng-repeat="i in listDocumentoView" >
+                        <a class="thumbnail" target="_blank" href="~/Utils/pdfs/{{i.ruta}}">
+                            <p>{{i.nombre}}</p>
+                            <span class="glyphicon glyphicon-picture"></span>
+                        </a>
+                        <button ng-if="i.leido_por == null" class="btn btn-info" ng-model="indicado" ng-click="changeView(i)">Aceptar condiciones</button>
+                        <p class="text-info" ng-if="i.leido_por != null"><span class="glyphicon glyphicon-ok" style="font-size:1em;"></span> Leido</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

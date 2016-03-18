@@ -100,6 +100,7 @@ namespace Metricaencuesta.Controllers
             }
             empleado empleado = new EmpleadoDB().listAll((int)id_empleado).First();
             empleado.curri_file = patch;
+            empleado.password = new EncriptarDesencriptar().Encriptar(empleado.password.ToString().Trim());
             return new JsonResult { Data = new EmpleadoDB().update(empleado, id_empleado), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
     }

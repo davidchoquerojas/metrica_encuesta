@@ -25,7 +25,7 @@ namespace Metricaencuesta.Controllers
         {
             try
             {
-                o.ip_conexion = System.Web.HttpContext.Current.Request.UserHostAddress;
+                o.ip_conexion = GetUserIP();
                 o.fecha_asistencia = System.DateTime.Now.AddHours(difftime);
                 o.hora_asistencia = System.DateTime.Now.AddHours(difftime).ToString("HH:mm");
                 o.usu_reg = Session["usuario"].ToString();
@@ -55,6 +55,7 @@ namespace Metricaencuesta.Controllers
                     razon_social = item.razon_social,
                     usuario = item.usuario,
                     fecha_asistencia = item.fecha_asistencia,
+                    fecha_asistenciaString = item.fecha_asistencia.ToLongDateString(),
                     hora_ingresoS = item.hora_ingresoS,
                     hora_ingreso = item.hora_ingreso,
                     ip_ingreso = item.ip_ingreso,
@@ -74,6 +75,18 @@ namespace Metricaencuesta.Controllers
         public JsonResult exportFile(asistencia o)
         {
             return new JsonResult { Data = new string[1] { new Utils.ReporteAsistencia().exportExcel(new AsistenciaDB().consult(o)) } };
+        }
+
+        private string GetUserIP()
+        {
+            string ipList = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+
+            if (!string.IsNullOrEmpty(ipList))
+            {
+                return ipList.Split(',')[0];
+            }
+
+            return Request.ServerVariables["REMOTE_ADDR"];
         }
     }
 }

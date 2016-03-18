@@ -2,6 +2,9 @@
 $blanco:white;
 body {
     overflow-x: hidden;
+    .modal-backdrop{
+        background-color:transparent;
+    }
     header {
         margin-bottom: 15px;
         .header_center {
@@ -34,7 +37,27 @@ body {
                 padding: 2px 15px;
             }
         }
+       //VIEW DOCUMENT
+       .modal{
+           .modal-content{
+               border-radius:unset;
+               margin-top:10em;
+               .modal-body{
+                   .box-document{
+                       text-align:center;
+                       p{
+                           font-size:2em;
+                           font-family:sans-serif;
+                       }
+                       span{
+                           font-size:15em;
+                       }
+                   }
+               }
+           }
+       }
     }
+
 }
 @media screen and (max-width: 750px){
     body {

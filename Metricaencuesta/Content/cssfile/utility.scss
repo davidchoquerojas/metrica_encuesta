@@ -93,4 +93,23 @@
             transform: translateY(-15px);
         }
     }
+    //estilos para listar usuarios en documentos
+    section{
+        #modal_usuario{
+            .modal-content{
+                border-radius:unset;
+                .modal-body{
+                    min-height:400px;
+                    .list-group{
+                        &>li{
+                            img{
+                                height:60px;
+                                width:60px;
+                            }
+                        }
+                    }
+                }
+            }   
+        }
+    }
 }

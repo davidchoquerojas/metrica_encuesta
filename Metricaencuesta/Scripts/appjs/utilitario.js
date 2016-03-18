@@ -17,5 +17,22 @@
         }
         reader.readAsDataURL(file);
     });
-    
+});
+app.controller("navCtrl", function ($scope, AppService, AppFctry) {
+    $scope.listDocumentoView = [];
+    var employe = function () {
+        this.id_empleado = AppService.getUserId()
+    }
+    $scope.viewDocument = function () {
+        AppFctry.getDocumento({ empleado: new employe() }).$promise.then(function (res) {
+            $scope.listDocumentoView = res;
+        });
+        $("#modal_document").modal("show");
+        console.log($scope.listDocumentoView);
+    }
+    $scope.changeView = function (documento) {
+        AppFctry.setAtualizarVisto({ empleado: new employe(), documento: documento }).$promise.then(function (res) {
+            $scope.listDocumentoView = res;
+        });
+    }
 });

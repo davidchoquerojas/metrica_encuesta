@@ -52,6 +52,12 @@ app.factory("AppFctry", function ($resource) {
         //encuesta config
         getEncuestaConfig: { method: "GET", url: baseurl + "/encuestaconfig/listAll", isArray: true },
         saveEncuestaConfig: { method: "POST", url: baseurl + "/encuestaconfig/save", isArray: true },
-        updateEncuestaConfig: { method: "POST", url: baseurl + "/encuestaconfig/update", isArray: true }
+        updateEncuestaConfig: { method: "POST", url: baseurl + "/encuestaconfig/update", isArray: true },
+
+        //documento
+        saveDocumento: { method: "POST", url: baseurl + "/documento/save", isArray: true },
+        getDocumento: { method: "POST", url: baseurl + "/documento/list", isArray: true },
+        getUsersByDocumento: { method: "POST", url: baseurl + "/documento/listUser", isArray: true },
+        setAtualizarVisto: { method: "POST", url: baseurl + "/documento/updateVistoDocumento", isArray: true },
     });
 });

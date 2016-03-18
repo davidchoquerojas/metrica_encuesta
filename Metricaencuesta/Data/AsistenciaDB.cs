@@ -32,6 +32,7 @@ namespace APIASIS.Data
                             id_empleado = o.a.id_empleado,
                             tipo_asistencia = o.a.tipo_asistencia,
                             fecha_asistencia = o.a.fecha_asistencia,
+                            fecha_asistenciaString = o.a.fecha_asistencia.ToLongDateString(),
                             hora_asistencia = o.a.hora_asistencia,
                             ip_conexion = o.a.ip_conexion,
                             latitud = o.a.latitud,

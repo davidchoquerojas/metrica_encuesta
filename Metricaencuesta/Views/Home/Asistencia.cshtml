@@ -36,7 +36,7 @@
 
                 <div class="col-xs-12 col-sm-2 col-md-2">
                     <div class="form-group">
-                        <button class="btn btn-default pull-right" ng-click="save()" ng-disabled="tipo_asistencia == undefined">
+                        <button class="btn btn-default pull-right" ng-click="save()" ng-disabled="tipo_asistencia == undefined || isMobile == true">
                             <span class="glyphicon glyphicon-save"></span>
                             Registrar
                         </button>
@@ -47,7 +47,7 @@
     </div>
     <div class="col-md-12">
         <div class="table-responsive">
-            <table class="table table-hover table-striped">
+            <table class="table table-hover table-striped" ng-cloak>
                 <thead>
                     <tr>
                         <th class="text-center">Colaborador <i class="fa fa-sort"></i></th>
@@ -61,7 +61,7 @@
                         <td class="text-center">{{a.empleado.nombres}} {{a.empleado.apellidos}}</td>
                         <td class="text-center"  ng-if="a.tipo_asistencia == 'Ing'">Inicio de servicio</td>
                         <td class="text-center"  ng-if="a.tipo_asistencia != 'Ing'">Fin de servicio</td>
-                        <td class="text-center">{{a.fecha_asistencia|totime | date:'fullDate'}}</td>
+                        <td class="text-center">{{a.fecha_asistenciaString}}</td>
                         <td class="text-center">{{a.hora_asistencia | date:'mediumTime'}}</td>
                     </tr>
                 </tbody>

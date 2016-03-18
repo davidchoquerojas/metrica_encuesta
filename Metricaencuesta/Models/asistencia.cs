@@ -12,6 +12,7 @@ namespace Metricaencuesta.Models
         [JsonProperty]
         [JsonConverter(typeof(IsoDateTimeConverter))]
         public System.DateTime fecha_asistencia { get; set; }
+
         public string hora_asistencia { get; set; }
         public string ip_conexion { get; set; }
         public string latitud { get; set; }
@@ -22,6 +23,9 @@ namespace Metricaencuesta.Models
         public string usu_reg { get; set; }
         public string usu_mod { get; set; }
         public empleado empleado { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
+        public string fecha_asistenciaString { get; set; }
     }
     public class asistenciaReport
     {
@@ -36,5 +40,8 @@ namespace Metricaencuesta.Models
         public String hora_salida { get; set; }
         public String ip_salida { get; set; }
         public String diferenciaSalida { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
+        public string fecha_asistenciaString { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace Metricaencuesta.Utils
                 var smtpClient = new SmtpClient() {
                     Host = ConfigurationManager.AppSettings.Get("server").ToString(),
                     UseDefaultCredentials = false,
-                    Credentials = new System.Net.NetworkCredential(user,pass,"Metrica"),
+                    Credentials = new System.Net.NetworkCredential(user,pass),
                     Port = Convert.ToInt32(ConfigurationManager.AppSettings.Get("port")),
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     EnableSsl = true

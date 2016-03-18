@@ -20,6 +20,13 @@
     this.getEncuestaId = function () {
         return document.getElementById("id_encuesta").value;
     },
+    this.isMobile = function () {
+        var device = navigator.userAgent;
+        if (device.match(/Iphone/i) || device.match(/Ipod/i) || device.match(/Android/i) || device.match(/J2ME/i) || device.match(/BlackBerry/i) || device.match(/iPhone|iPad|iPod/i) || device.match(/Opera Mini/i) || device.match(/IEMobile/i) || device.match(/Mobile/i) || device.match(/Windows Phone/i) || device.match(/windows mobile/i) || device.match(/windows ce/i) || device.match(/webOS/i) || device.match(/palm/i) || device.match(/bada/i) || device.match(/series60/i) || device.match(/nokia/i) || device.match(/symbian/i) || device.match(/HTC/i))
+            return true;
+        else 
+            return false;
+    },
     this.showMessage =function(title,message){
         var object = document.createElement("div");
         object.className = "alert alert-success respuesta";
@@ -33,10 +40,8 @@
 });
 app.filter('totime', function () {
     return function (jsonDate) {
-        //console.log(new Date());
-        //console.log(new Date(parseInt(jsonDate.substr(6))));
-        var date = new Date(parseInt(jsonDate.substr(6)));
-        return date;
+        var parser = jsonDate.replace(/\/Date\((-?\d+)\)\//, '$1');
+        return new Date(parseInt(parser));
     };
 
 });

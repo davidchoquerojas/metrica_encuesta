@@ -12,8 +12,8 @@ namespace Metricaencuesta.Utils
     {
         public String differenceTime(String first, String two)
         {
-            var date1 = first.Trim() == "" ? DateTime.Now.ToShortTimeString() : first;
-            var date2 = two.Trim() == "" ? DateTime.Now.ToShortTimeString() : two;
+            var date1 = first.Trim() == "" ? DateTime.Now.ToString("HH:mm") : first;
+            var date2 = two.Trim() == "" ? DateTime.Now.ToString("HH:mm") : two;
             var time1 = Convert.ToDateTime(System.DateTime.Now.ToShortDateString() + " " + date1 + ":00");
             var time2 = Convert.ToDateTime(System.DateTime.Now.ToShortDateString() + " " + date2 + ":00");
             TimeSpan rest = time2 - time1;
