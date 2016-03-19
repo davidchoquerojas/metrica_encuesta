@@ -45,10 +45,13 @@ app.filter('totime', function () {
     };
 
 });
+//advertencia
+console.log("%c !CUIDADO!", "background-color:red;color:yellow;font-size:5em;");
+console.log("%cProhibido piratear el codigo de esta aplicación si no metrica te puede demandar ó ocacionar tu despido sin goce de haber.", "background-color:#006683;color:white;font-size:3em;");
 try {
     var tipo_usuario = document.getElementById("tipo_usuario");
     if (tipo_usuario.value == "Col")
         document.getElementById("home_direct").style.display = "none";
 }catch(e){
-    console.log("OK");
+    console.log("ready");
 }

@@ -75,25 +75,5 @@
     <script src="~/Scripts/appjs/app-service.js"></script>
     <script src="~/Scripts/appjs/utilitario.js"></script>
     @RenderSection("scripts", required: false)
-    <script>
-        (function () {
-            debugger;
-            try {
-                var $_console$$ = console;
-                Object.defineProperty(window, "console", {
-                    get: function () {
-                        if ($_console$$._commandLineAPI)
-                            throw "!CUIDADO!, prohibido piratear el codigo si no metrica te puede demandar o puede ocacionar tu despido sin goze de haber.";
-                        return $_console$$
-                    },
-                    set: function ($val$$) {
-                        $_console$$ = $val$$
-                    }
-                });
-            } catch (ex) {
-                alert('errror');
-            }
-        })();
-    </script>
 </body>
 </html>
