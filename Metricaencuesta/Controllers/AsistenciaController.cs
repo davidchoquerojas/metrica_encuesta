@@ -18,7 +18,12 @@ namespace Metricaencuesta.Controllers
         {
             return new JsonResult { Data = new AsistenciaDB().listAll(id), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
-
+        [HttpPost]
+        public JsonResult listAllForMaps(asistencia asistencia)
+        {
+            var listAsistencia = new AsistenciaDB().listAllForMaps(asistencia);
+            return new JsonResult { Data = listAsistencia };
+        }
         //agregar asistencia
         [HttpPost]
         public JsonResult add(asistencia o)
@@ -37,13 +42,11 @@ namespace Metricaencuesta.Controllers
                 throw (ex);
             }
         }
-
         [HttpPost]
         public JsonResult chekMark(asistencia o)
         {
             return new JsonResult { Data = new AsistenciaDB().chekMark(o) };
         }
-
         [HttpPost]
         public JsonResult consult(asistencia o)
         {
@@ -70,13 +73,11 @@ namespace Metricaencuesta.Controllers
             }
             return new JsonResult { Data = reportList };
         }
-
         [HttpPost]
         public JsonResult exportFile(asistencia o)
         {
             return new JsonResult { Data = new string[1] { new Utils.ReporteAsistencia().exportExcel(new AsistenciaDB().consult(o)) } };
         }
-
         private string GetUserIP()
         {
             string ipList = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];

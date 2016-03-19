@@ -10,5 +10,13 @@
   {
     "outputFile": "Content/cssfile/utility.css",
     "inputFile": "Content/cssfile/utility.scss"
+  },
+  {
+    "outputFile": "Content/cssfile/mapVisualizer.css",
+    "inputFile": "Content/cssfile/mapVisualizer.scss"
+  },
+  {
+    "outputFile": "Content/mapVisualizer.css",
+    "inputFile": "Content/mapVisualizer.scss"
   }
 ]

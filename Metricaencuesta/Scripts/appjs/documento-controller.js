@@ -40,7 +40,6 @@
         $scope.documento = documento;
     }
     $scope.viewUser = function (documento) {
-        console.log(documento);
         AppFctry.getUsersByDocumento({id:null}, documento).$promise.then(function (res) {
             $scope.listEmpleado = res;
             $("#modal_usuario").modal("show");

@@ -43,6 +43,7 @@ app.factory("AppFctry", function ($resource) {
         chekMark: { method: "POST", url: baseurl + "/asistencia/chekMark", isArray: true },
         getReport: { method: "POST", url: baseurl + "/asistencia/consult", isArray: true },
         exportFile: { method: "POST", url: baseurl + "/asistencia/exportFile", isArray: true },
+        getAsistenciaForMaps: { method: "POST", url: baseurl + "/asistencia/listAllForMaps", isArray: true },
 
         //cliente_empleado
         getClienteEmpleado: { method: "GET", url: baseurl + "/clienteempleado/listAll", isArray: true },

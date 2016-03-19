@@ -28,7 +28,6 @@ app.controller("navCtrl", function ($scope, AppService, AppFctry) {
             $scope.listDocumentoView = res;
         });
         $("#modal_document").modal("show");
-        console.log($scope.listDocumentoView);
     }
     $scope.changeView = function (documento) {
         AppFctry.setAtualizarVisto({ empleado: new employe(), documento: documento }).$promise.then(function (res) {

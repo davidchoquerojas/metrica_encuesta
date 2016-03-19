@@ -59,6 +59,46 @@ namespace APIASIS.Data
                 throw;
             }
         }
+        public List<asistencia> listAllForMaps(asistencia asistencia)
+        {
+            var listAsistencia = new List<asistencia>();
+            try
+            {
+                using (var db = new PruebaContext())
+                {
+                    var query = (from a in db.asistencias
+                                 join b in db.empleados on a.id_empleado equals b.id_empleado
+                                 where (a.id_empleado == asistencia.id_empleado || asistencia.id_empleado == 0)
+                                 &&    (a.tipo_asistencia == asistencia.tipo_asistencia || asistencia.tipo_asistencia == null)
+                                 &&    a.fecha_asistencia == asistencia.fecha_asistencia
+                                 select new { a, b }
+                                 ).ToList();
+                    foreach (var item in query)
+                    {
+                        var v_asistencia = new asistencia()
+                        {
+                            hora_asistencia = item.a.hora_asistencia,
+                            ip_conexion = item.a.ip_conexion,
+                            latitud = item.a.latitud,
+                            longitud = item.a.longitud,
+                            empleado = new empleado
+                            {
+                                apellidos = item.b.apellidos,
+                                nombres = item.b.nombres,
+                                hora_ingreso = item.b.hora_ingreso,
+                                hora_salida = item.b.hora_salida
+                            }
+                        };
+                        listAsistencia.Add(v_asistencia);
+                    }
+                }
+                return listAsistencia;
+            }
+            catch (Exception ex)
+            {
+                throw(new Exception(ex.Message));
+            }
+        }
         public List<asistencia> add(asistencia o)
         {
             try

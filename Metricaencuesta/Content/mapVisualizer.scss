@@ -1,0 +1,44 @@
+﻿html{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    #map{
+        height: 100%;
+    }
+    .container-fluid{
+        position:fixed;
+        z-index:3;
+        background-color:white;
+        width:100%;
+        .box-header{
+            padding:6px 0;
+            .form-inline{
+                .form-group{
+                    &>label{
+                        padding:0 12px 0 0;
+                        font-size:.9em;
+                    }
+                    &>input,select{
+                        margin-right:16px;
+                        height:26px;
+                        border-radius:unset;
+                        padding:3px 12px;
+                    }
+                    .hidden-box{
+                        background-color:white;
+                        font-size:1.8em;
+                        padding:.3em;
+                        position:absolute;
+                        right:20px;
+                        top:1em;
+                    }
+                }
+            }
+        }
+    }
+}

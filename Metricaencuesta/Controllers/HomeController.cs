@@ -9,7 +9,9 @@ namespace Metricaencuesta.Controllers
         [SessionValidator]
         public ActionResult documento()
         {
-            return View();
+            if (Session["tipo_usuario"].ToString().ToUpper().Equals("ADM"))
+                return View();
+            return RedirectToAction("asistencia", "home");
         }
         [SessionValidator]
         public ActionResult cliente()

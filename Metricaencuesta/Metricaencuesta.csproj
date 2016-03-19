@@ -168,6 +168,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MapVisualizerController.cs" />
     <Compile Include="Controllers\PreguntaController.cs" />
     <Compile Include="Controllers\ResultadoController.cs" />
     <Compile Include="Data\AsistenciaDB.cs" />
@@ -229,6 +230,12 @@
     <Content Include="Content\cssfile\header.min.css" />
     <Content Include="Content\cssfile\login.css" />
     <Content Include="Content\cssfile\login.min.css" />
+    <Content Include="Content\mapVisualizer.css">
+      <DependentUpon>mapVisualizer.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\mapVisualizer.min.css">
+      <DependentUpon>mapVisualizer.css</DependentUpon>
+    </Content>
     <Content Include="Content\cssfile\nav.css" />
     <Content Include="Content\cssfile\nav.min.css" />
     <Content Include="Content\cssfile\section.css" />
@@ -286,6 +293,7 @@
     <Content Include="Scripts\appjs\encuesta_config-controller.js" />
     <Content Include="Scripts\appjs\evaluador-controller.js" />
     <Content Include="Scripts\appjs\login-controller.js" />
+    <Content Include="Scripts\appjs\map_visualizer-controller.js" />
     <Content Include="Scripts\appjs\pregunta-controller.js" />
     <Content Include="Scripts\appjs\reporte-controller.js" />
     <Content Include="Scripts\appjs\reporte_encuesta-controller.js" />
@@ -306,6 +314,7 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="Content\mapVisualizer.scss" />
     <None Include="Properties\PublishProfiles\Encuesta.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\angular-locale_es-pe.js" />
@@ -360,6 +369,7 @@
     <Content Include="Views\partial\DocumentoView.cshtml" />
     <Content Include="Views\Home\Documento.cshtml" />
     <Content Include="Views\partial\UsuarioDocumento.cshtml" />
+    <Content Include="Views\MapVisualizer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
