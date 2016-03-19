@@ -20,7 +20,7 @@
     $scope.in = function () {
         $("#alert").modal("show");
         AppFctry.setLogin({}, new evaluador()).$promise.then(function (res) {
-            $("#alert").modal("show");
+            $("#alert").modal("hide");
             if (res.length > 0)
                 if (res[0] != "BAD")
                     window.location.href = baseurl+"/home/instruccion";
