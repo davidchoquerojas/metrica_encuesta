@@ -70,7 +70,7 @@ namespace APIASIS.Data
                                  join b in db.empleados on a.id_empleado equals b.id_empleado
                                  where (a.id_empleado == asistencia.id_empleado || asistencia.id_empleado == 0)
                                  &&    (a.tipo_asistencia == asistencia.tipo_asistencia || asistencia.tipo_asistencia == null)
-                                 &&    a.fecha_asistencia == asistencia.fecha_asistencia
+                                 &&    a.fecha_asistencia == asistencia.fecha_asistencia.Date
                                  select new { a, b }
                                  ).ToList();
                     foreach (var item in query)
