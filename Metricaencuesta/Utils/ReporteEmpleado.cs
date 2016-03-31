@@ -15,6 +15,8 @@ namespace Metricaencuesta.Utils
         public string generateExcelEmpleado(DateTime fecha_ini, DateTime fecha_fin)
         {
             var font = new ReporteEncuestaExcel();
+            var styleHeader = font.setFontText(12, true, book);
+            var styleBody = font.setFontText(10, false, book);
             String[] month = {"","ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"};
             var anioEvaluacion = new ReporteEncuestaDB().consultReportEmpleado(fecha_ini,fecha_fin,1);
             if (anioEvaluacion.Count == 0)
@@ -28,7 +30,7 @@ namespace Metricaencuesta.Utils
             cHeader = rHeader.CreateCell(1);
             sheet.AddMergedRegion(new CellRangeAddress(1, 2, 1, 1));
             cHeader.SetCellValue("APELLIDOS Y NOMBRES");
-            cHeader.CellStyle = font.setFontText(12, true, book);
+            cHeader.CellStyle = styleHeader;
             cHeader.CellStyle.WrapText = true;
             sheet.SetColumnWidth(1, 8000);
 
@@ -38,7 +40,7 @@ namespace Metricaencuesta.Utils
                 if (anioEvaluacion[i].mes_evaluacion > 1)
                     sheet.AddMergedRegion(new CellRangeAddress(1, 1, cellMerge, anioEvaluacion[i].mes_evaluacion + cellMerge));
                 cHeader.SetCellValue(anioEvaluacion[i].anio_evaluacion);
-                cHeader.CellStyle = font.setFontText(12, true, book);
+                cHeader.CellStyle = styleHeader;
                 cHeader.CellStyle.WrapText = true;
                 cellMerge += anioEvaluacion[i].mes_evaluacion;
             }
@@ -50,7 +52,7 @@ namespace Metricaencuesta.Utils
             {
                 cMonth = rMonth.CreateCell(2+i);
                 cMonth.SetCellValue(month[mesEvaluacion[i].mes_evaluacion]);
-                cMonth.CellStyle = font.setFontText(12, true, book);
+                cMonth.CellStyle = styleHeader;
                 sheet.SetColumnWidth(2 + i, 4000);
             }
 
@@ -62,7 +64,7 @@ namespace Metricaencuesta.Utils
                 rNombres = sheet.CreateRow(3+i);
                 ICell cNombres = rNombres.CreateCell(1);
                 cNombres.SetCellValue(datoEmpleado[i].nombres);
-                cNombres.CellStyle = font.setFontText(12, false, book);
+                cNombres.CellStyle = styleHeader;
                 var columnIndex = 2;
                 for (int a = 0; a < anioEvaluacion.Count; a++)
                 {
@@ -74,7 +76,7 @@ namespace Metricaencuesta.Utils
                         {
                             ICell cPuntaje = rNombres.CreateCell(columnIndex);
                             cPuntaje.SetCellValue(listPuntaje[m].puntaje);
-                            cPuntaje.CellStyle = font.setFontText(10, false, book);
+                            cPuntaje.CellStyle = styleBody;
                             columnIndex++;
                             m++;
                         }

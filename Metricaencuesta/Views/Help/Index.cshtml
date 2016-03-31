@@ -1,0 +1,59 @@
+﻿@model Metricaencuesta.Models.helper.queryHelper
+@using System.Data
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    @using (Html.BeginForm("listQuery","Help", System.Web.Mvc.FormMethod.Post)) 
+    {
+        @*@Html.AntiForgeryToken()*@
+    
+        <div class="form-inline">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group col-md-11">
+                @Html.LabelFor(model => model.strQuery, htmlAttributes: new { @class = "control-label col-md-1" })
+                <div class="col-md-11">
+                    @Html.EditorFor(model => model.strQuery, new { htmlAttributes = new { @class = "form-control",style = "min-height:150px;width:100%;" } })
+                    @Html.ValidationMessageFor(model => model.strQuery, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-1">
+                <div class="col-md-10">
+                    <input type="submit" value="Consultar" class="btn btn-default" name="Cammand"/>
+                    <input type="submit" value="Exportar" class="btn btn-default" name="Cammand" />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <br />
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            @foreach (DataColumn column in Model.data.Columns)
+                            {
+                            <th>@column.ColumnName</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (DataRow row in Model.data.Rows)
+                        {
+                        <tr>
+                            @foreach (DataColumn column in Model.data.Columns)
+                            {
+                            <td>@row[column]</td>
+                            }
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <br />
+            <br />
+        </div>
+    }
+</div>

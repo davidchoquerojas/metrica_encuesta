@@ -14,7 +14,7 @@ namespace Metricaencuesta.Controllers
         [HttpGet]
         public JsonResult listAll()
         {
-            return new JsonResult { Data = new ClienteDB().listAll(), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return new JsonResult { Data = new ClienteDB().listAll(), JsonRequestBehavior = JsonRequestBehavior.AllowGet,MaxJsonLength  = Int32.MaxValue };
         }
 
         [HttpPost]

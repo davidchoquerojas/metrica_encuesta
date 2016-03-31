@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
+using Metricaencuesta.Data;
 
 namespace Metricaencuesta.Controllers
 {

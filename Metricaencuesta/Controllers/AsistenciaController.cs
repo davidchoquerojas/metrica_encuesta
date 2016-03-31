@@ -22,7 +22,7 @@ namespace Metricaencuesta.Controllers
         public JsonResult listAllForMaps(asistencia asistencia)
         {
             var listAsistencia = new AsistenciaDB().listAllForMaps(asistencia);
-            return new JsonResult { Data = listAsistencia };
+            return new JsonResult { Data = listAsistencia,MaxJsonLength = Int32.MaxValue };
         }
         //agregar asistencia
         [HttpPost]
@@ -71,7 +71,7 @@ namespace Metricaencuesta.Controllers
                 };
                 reportList.Add(reporte);
             }
-            return new JsonResult { Data = reportList };
+            return new JsonResult { Data = reportList,MaxJsonLength = Int32.MaxValue };
         }
         [HttpPost]
         public JsonResult exportFile(asistencia o)

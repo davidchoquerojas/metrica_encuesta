@@ -165,6 +165,7 @@
     <Compile Include="Controllers\EncuestaConfigController.cs" />
     <Compile Include="Controllers\EvaluadorController.cs" />
     <Compile Include="Controllers\GpreguntaController.cs" />
+    <Compile Include="Controllers\HelpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -180,6 +181,7 @@
     <Compile Include="Data\EvaluadorDB.cs" />
     <Compile Include="Data\GpreguntaDB.cs" />
     <Compile Include="Data\PreguntaDB.cs" />
+    <Compile Include="Data\QueryHelperDB.cs" />
     <Compile Include="Data\ReporteEncuestaDB.cs" />
     <Compile Include="Data\ResultadoDB.cs" />
     <Compile Include="Global.asax.cs">
@@ -193,6 +195,7 @@
     <Compile Include="Models\encuesta_config.cs" />
     <Compile Include="Models\evaluador.cs" />
     <Compile Include="Models\gpregunta.cs" />
+    <Compile Include="Models\helper\queryHelper.cs" />
     <Compile Include="Models\Mapping\asistenciaMap.cs" />
     <Compile Include="Models\Mapping\clienteMap.cs" />
     <Compile Include="Models\Mapping\cliente_empleadoMap.cs" />
@@ -310,6 +313,7 @@
     <Content Include="Content\instruccion.css.map">
       <DependentUpon>instruccion.css</DependentUpon>
     </Content>
+    <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -370,6 +374,7 @@
     <Content Include="Views\Home\Documento.cshtml" />
     <Content Include="Views\partial\UsuarioDocumento.cshtml" />
     <Content Include="Views\MapVisualizer\Index.cshtml" />
+    <Content Include="Views\Help\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

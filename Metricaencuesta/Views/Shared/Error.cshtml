@@ -1,8 +1,14 @@
-﻿<div class="row">
+﻿@model System.Web.Mvc.HandleErrorInfo
+<div class="row">
     <div class="col-md-12">
         <hgroup>
             <h1>Error.</h1>
-            <h2>sin permiso.</h2>
         </hgroup>
+        @*<h2>
+            @ViewBag.ErrorName
+        </h2>*@
+       <h2>
+           @ViewData["ErrorName"]
+        </h2>
     </div>
 </div>

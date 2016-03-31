@@ -16,6 +16,8 @@ namespace Metricaencuesta.Utils
         {
             try
             {
+                var font = new ReporteEncuestaExcel();
+
                 new Utils.DeleteFile().deleteFile(HttpContext.Current.Server.MapPath(@"~/Utils/xlsxs/"));
                 XSSFWorkbook book = new XSSFWorkbook();
                 var ReporteGpregunta = new ReporteEncuestaDB().getData(1, fecha_ini, fecha_fin);
@@ -23,6 +25,8 @@ namespace Metricaencuesta.Utils
                 if (ReporteGpregunta.Count == 0)
                     return string.Empty;
 
+                var styleHeader = font.setFontText(12, true, book);
+                var styleBody = font.setFontText(10, false, book);
                 String[] hPersona = { "N°", "NOMBRES Y APELLIDOS DEL \n COLABORADOR", "EVALUADOR", "EMPRESA" };
                 var sheet = book.CreateSheet("Reporte 1");
                 //Titulo cabecera 1
@@ -42,7 +46,7 @@ namespace Metricaencuesta.Utils
                     sheet.AddMergedRegion(new CellRangeAddress(1, 1, cellMerge, endIndex));
                     cGpregunta = rGpregunta.CreateCell(cellMerge);
                     cGpregunta.SetCellValue(ReporteGpregunta[contador].gdescripcion);
-                    cGpregunta.CellStyle = setFontText(12, true, book);
+                    cGpregunta.CellStyle = styleHeader;
                     cellMerge += ReporteGpregunta[contador].cont_idPregunta + 1;
 
                     var listPregunta = ReportePregunta.FindAll(p => p.id_gpregunta == ReporteGpregunta[contador].id_gpregunta);
@@ -64,7 +68,7 @@ namespace Metricaencuesta.Utils
                 {
                     cGpregunta = rGpregunta.CreateCell(contCell + u);
                     cGpregunta.SetCellValue(ultimacelda[u]);
-                    cGpregunta.CellStyle = setFontText(12, true, book);
+                    cGpregunta.CellStyle = styleHeader;
                     cGpregunta.CellStyle.WrapText = true;
                     sheet.AddMergedRegion(new CellRangeAddress(1, 2, cellMerge + u, cellMerge + u));
                 }
@@ -76,7 +80,7 @@ namespace Metricaencuesta.Utils
                     if (i > 0) sheet.SetColumnWidth(i, 5000);
                     cPersona = rGpregunta.CreateCell(i);
                     cPersona.SetCellValue(hPersona[i]);
-                    cPersona.CellStyle = setFontText(12, true, book);
+                    cPersona.CellStyle = styleHeader;
                     sheet.AddMergedRegion(new CellRangeAddress(1, 2, i, i));
                     cPersona.CellStyle.WrapText = true;
                 }
@@ -93,19 +97,19 @@ namespace Metricaencuesta.Utils
 
                     cPuntaje = rPuntaje.CreateCell(0);
                     cPuntaje.SetCellValue(i + 1);
-                    cPuntaje.CellStyle = setFontText(10, false, book);
+                    cPuntaje.CellStyle = styleBody;
 
                     cPuntaje = rPuntaje.CreateCell(1);
                     cPuntaje.SetCellValue(listPuntaje[0].empleado);
-                    cPuntaje.CellStyle = setFontText(10, false, book);
+                    cPuntaje.CellStyle = styleBody;
 
                     cPuntaje = rPuntaje.CreateCell(2);
                     cPuntaje.SetCellValue(listPuntaje[0].evaluador);
-                    cPuntaje.CellStyle = setFontText(10, false, book);
+                    cPuntaje.CellStyle = styleBody;
 
                     cPuntaje = rPuntaje.CreateCell(3);
                     cPuntaje.SetCellValue(listPuntaje[0].empresa);
-                    cPuntaje.CellStyle = setFontText(10, false, book);
+                    cPuntaje.CellStyle = styleBody;
                     var countPuntaje = 4;
                     var totalPuntaje = 0;
                     for (int f = 0; f < ReporteGpregunta.Count; f++)
@@ -122,7 +126,7 @@ namespace Metricaencuesta.Utils
                                 totalDet += listPreguntaDet[c].puntaje;
                                 cPuntaje.SetCellValue(listPreguntaDet[c].puntaje);
                             }
-                            cPuntaje.CellStyle = setFontText(10, false, book);
+                            cPuntaje.CellStyle = styleBody;
                             countPuntaje++;
                         }
                         totalPuntaje += totalDet;

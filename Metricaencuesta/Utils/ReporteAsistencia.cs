@@ -38,12 +38,14 @@ namespace Metricaencuesta.Utils
             String[] heads = { "Empresa", "Usuario", "Fecha Asistencia", "Hora Ingreso Est.", "Hora Ingreso Marcado", "IP_Ingreso","Diferencia Ingreso", "Hora Salida Est.", "Hora Salida Marcado","IP_Salida","Diferencia Salida" };
             var sheet = book.CreateSheet("Asistencia_" + System.DateTime.Now.AddHours(-7).ToString("dd-mm-yyyy"));
             var rHeader = sheet.CreateRow(1);
+            var styleHeader = font.setFontText(12, true, book);
+            var styleBody = font.setFontText(10, false, book);
             ICell cHeader;
             for (var i = 0; i < heads.Length; i++)
             {
                 cHeader = rHeader.CreateCell(i + 1);
                 cHeader.SetCellValue(heads[i]);
-                cHeader.CellStyle = font.setFontText(12, true, book);
+                cHeader.CellStyle = styleHeader;
 
             }
             
@@ -55,47 +57,47 @@ namespace Metricaencuesta.Utils
 
                 cbody = rBody.CreateCell(1);
                 cbody.SetCellValue(o[r].razon_social);
-                cbody.CellStyle = font.setFontText(10, false, book);
+                cbody.CellStyle = styleBody;
 
                 cbody = rBody.CreateCell(2);
                 cbody.SetCellValue(o[r].usuario);
-                cbody.CellStyle = font.setFontText(10, false, book);
+                cbody.CellStyle = styleBody;
 
                 cbody = rBody.CreateCell(3);
                 cbody.SetCellValue(o[r].fecha_asistencia.ToShortDateString());
-                cbody.CellStyle = font.setFontText(10, false, book);
+                cbody.CellStyle = styleBody;
 
                 cbody = rBody.CreateCell(4);
                 cbody.SetCellValue(o[r].hora_ingresoS.ToString());
-                cbody.CellStyle = font.setFontText(10, false, book);
+                cbody.CellStyle = styleBody;
 
                 cbody = rBody.CreateCell(5);
                 cbody.SetCellValue(o[r].hora_ingreso.ToString());
-                cbody.CellStyle = font.setFontText(10, false, book);
+                cbody.CellStyle = styleBody;
 
                 cbody = rBody.CreateCell(6);
                 cbody.SetCellValue(o[r].ip_ingreso.ToString());
-                cbody.CellStyle = font.setFontText(10, false, book);
+                cbody.CellStyle = styleBody;
 
                 cbody = rBody.CreateCell(7);
                 cbody.SetCellValue(this.differenceTime(o[r].hora_ingresoS, o[r].hora_ingreso));
-                cbody.CellStyle = font.setFontText(10, false, book);
+                cbody.CellStyle = styleBody;
 
                 cbody = rBody.CreateCell(8);
                 cbody.SetCellValue(o[r].hora_SalidaS);
-                cbody.CellStyle = font.setFontText(10, false, book);
+                cbody.CellStyle = styleBody;
 
                 cbody = rBody.CreateCell(9);
                 cbody.SetCellValue(o[r].hora_salida);
-                cbody.CellStyle = font.setFontText(10, false, book);
+                cbody.CellStyle = styleBody;
 
                 cbody = rBody.CreateCell(10);
                 cbody.SetCellValue(o[r].ip_salida);
-                cbody.CellStyle = font.setFontText(10, false, book);
+                cbody.CellStyle = styleBody;
 
                 cbody = rBody.CreateCell(11);
                 cbody.SetCellValue(this.differenceTime(o[r].hora_SalidaS, o[r].hora_salida));
-                cbody.CellStyle = font.setFontText(10, false, book);
+                cbody.CellStyle = styleBody;
             }
            
             var guide = "Reporte_asistencia_" + DateTime.Now.ToString("yyyyMMddHHmmss");

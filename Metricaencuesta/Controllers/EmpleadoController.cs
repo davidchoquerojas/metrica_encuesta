@@ -18,13 +18,21 @@ namespace Metricaencuesta.Controllers
         [HttpGet]
         public JsonResult listAll(int? id,string estado = null)
         {
-            return new JsonResult { Data = new EmpleadoDB().listAll((int)id,estado), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            try
+            {
+                return new JsonResult { Data = new EmpleadoDB().listAll((int)id, estado), JsonRequestBehavior = JsonRequestBehavior.AllowGet,MaxJsonLength = Int32.MaxValue };
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult { Data = new String[1] { ex.Message }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+            
         }
         [SessionValidator]
         [HttpGet]
         public JsonResult listByEvaluador(int id)
         {
-            return new JsonResult { Data = new EmpleadoDB().listByEvaluador(id),JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return new JsonResult { Data = new EmpleadoDB().listByEvaluador(id),JsonRequestBehavior = JsonRequestBehavior.AllowGet,MaxJsonLength = Int32.MaxValue };
         }
         //validar el login para un usuario
         [HttpPost]

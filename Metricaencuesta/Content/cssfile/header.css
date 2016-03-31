@@ -1,5 +1,5 @@
 ﻿body {
-  overflow-x: hidden; }
+  overflow: hidden; }
   body .modal-backdrop {
     background-color: transparent; }
   body header {

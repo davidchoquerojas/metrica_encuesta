@@ -13,7 +13,7 @@ namespace Metricaencuesta.Controllers
         [HttpGet]
         public JsonResult listPregunta()
         {
-            return new JsonResult { Data = new ResultadoDB().listPregunta(), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return new JsonResult { Data = new ResultadoDB().listPregunta(), JsonRequestBehavior = JsonRequestBehavior.AllowGet,MaxJsonLength = Int32.MaxValue };
         }
 
         [HttpPost]
@@ -73,7 +73,7 @@ namespace Metricaencuesta.Controllers
         public JsonResult getEncuestaByColaborador(int id)
         {
             var encuesta = new ResultadoDB().getEncuestaByColaborador(id);
-            return new JsonResult { Data = new string[1] { encuesta.ToString() } };
+            return new JsonResult { Data = new string[1] { encuesta.ToString() } ,MaxJsonLength = Int32.MaxValue};
         }
     }
 }

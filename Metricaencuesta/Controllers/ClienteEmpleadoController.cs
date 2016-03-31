@@ -1,6 +1,7 @@
 ﻿using Metricaencuesta.Data;
 using Metricaencuesta.Models;
 using Metricaencuesta.Utils;
+using System;
 using System.Web.Mvc;
 
 namespace Metricaencuesta.Controllers
@@ -11,7 +12,7 @@ namespace Metricaencuesta.Controllers
         [HttpGet]
         public JsonResult listAll()
         {
-            return new JsonResult { Data = new ClienteEmpleadoDB().listAll(),JsonRequestBehavior = JsonRequestBehavior.AllowGet};
+            return new JsonResult { Data = new ClienteEmpleadoDB().listAll(),JsonRequestBehavior = JsonRequestBehavior.AllowGet,MaxJsonLength = Int32.MaxValue};
         }
 
         [HttpPost]

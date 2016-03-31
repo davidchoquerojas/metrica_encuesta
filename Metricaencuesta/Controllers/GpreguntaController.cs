@@ -1,6 +1,7 @@
 ﻿using Metricaencuesta.Data;
 using Metricaencuesta.Models;
 using Metricaencuesta.Utils;
+using System;
 using System.Web.Mvc;
 
 namespace Metricaencuesta.Controllers
@@ -11,7 +12,7 @@ namespace Metricaencuesta.Controllers
         [HttpGet]
         public JsonResult listAll(string estado = null)
         {
-            return new JsonResult { Data = new GpreguntaDB().listAll(estado), JsonRequestBehavior = JsonRequestBehavior.AllowGet};
+            return new JsonResult { Data = new GpreguntaDB().listAll(estado), JsonRequestBehavior = JsonRequestBehavior.AllowGet,MaxJsonLength = Int32.MaxValue};
         }
 
         [HttpPost]
@@ -19,7 +20,7 @@ namespace Metricaencuesta.Controllers
         {
             o.fec_reg = System.DateTime.Now;
             o.usu_reg = Session["usuario"].ToString();
-            return new JsonResult { Data = new GpreguntaDB().save(o) };
+            return new JsonResult { Data = new GpreguntaDB().save(o),MaxJsonLength = Int32.MaxValue};
         }
 
         [HttpPost]
@@ -27,7 +28,7 @@ namespace Metricaencuesta.Controllers
         {
             o.fec_mod = System.DateTime.Now;
             o.usu_mod = Session["usuario"].ToString();
-            return new JsonResult { Data = new GpreguntaDB().update(o,(int)id) };
+            return new JsonResult { Data = new GpreguntaDB().update(o,(int)id),MaxJsonLength = Int32.MaxValue };
         }
     }
 }

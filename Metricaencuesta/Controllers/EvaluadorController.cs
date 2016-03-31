@@ -59,7 +59,7 @@ namespace Metricaencuesta.Controllers
                 evaluador.password = obj.Desencriptar(evaluador.password.ToString().Trim());
                 ListEvaluador.Add(evaluador);
             }
-            return new JsonResult { Data = ListEvaluador, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return new JsonResult { Data = ListEvaluador, JsonRequestBehavior = JsonRequestBehavior.AllowGet,MaxJsonLength = Int32.MaxValue };
         }
 
         [SessionValidator]
