@@ -1,5 +1,5 @@
 ﻿//window.baseurl = "http://control.metricaandina.com/metricaapp";
-window.baseurl = "http://localhost:51858/";
+window.baseurl = "http://localhost:8000";
 var app = angular.module("app", ["ngResource"]);
 app.factory("AppFctry", function ($resource) {
     return $resource(null, { id: "@_id" }, {
